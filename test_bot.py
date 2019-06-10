@@ -1,9 +1,21 @@
 import os, random
 import requests
 import telegram
+from boto3 import session
 from telegram import update
 from telegram.ext import Updater, ConversationHandler, CommandHandler, MessageHandler, Filters, InlineQueryHandler
 
+#ACCESS_ID = 'PZRDEXSHSF6V3YZWZ542'
+#SECRET_KEY = 'cNaRThVExwqjuDtdMx4EC8LMstLFOAdEYz8vZkrf/M0'
+
+#session = session.Session()
+#client = session.client('s3',
+ #                       region_name= 'nyc3',
+  #                      endpoint_url='https://nyc3.digitaloceanspaces.com',
+   #                     aws_access_key_id=ACCESS_ID,
+    #                    aws_secret_access_key=SECRET_KEY)
+
+#client.upload_file('bot236.html', 'hello-spaces', 'туц-folder/bot_file.html')
 
 def start(bot, updater):
     updater.message.reply_text("Hello")
@@ -20,12 +32,12 @@ def dog(bot, update):
     pass
 
 def girlfriend(bot, update):
-    girl = ['Собака', 'Няшка', 'Любимая', 'Рабыня', 'Хозяйка', 'Малютка', 'Госпожа', 'Овца']
+    girl = ['Собака', 'Няшка', 'Любимая', 'Хозяйка', 'Госпожа', 'Овца', 'Дура', 'Милашка', 'Бегемотик', 'Стерва']
     bot.sendMessage(chat_id=update.message.chat_id, text = girl[random.randint(0, len(girl))])
     pass
 
 def boyfriend(bot, update):
-    boy = ['Господин', 'Любовь', 'Защитник', 'Баран', 'Козел', 'Жаным']
+    boy = ['Господин', 'Любовь', 'Защитник', 'Баран', 'Козел', 'Жаным', 'Албасты', 'Кобель', 'Солнышко', 'Любимый']
     bot.sendMessage(chat_id=update.message.chat_id, text=boy[random.randint(0, len(boy))])
     pass
 
