@@ -47,7 +47,9 @@ def kanat(bot, update):
     pass
 
 def citation(bot, update):
-    Citations = ["Куда один туда и все.\n (c)Нурик"]
+    Citations = ["Куда один туда и все.\n(c)Нурик", "Махат поху котак бас.\n(с) Эдик",
+                 "Вард на 15 секунд,\nА Абыл на час!\n(c) Канат", "Ебать, я телепортируюсь.\n(c) Нурдаудет",
+                 "Главное душа.\n(c) Ара", "Свои поймут.\n(c) Нурик"]
     bot.sendMessage(chat_id=update.message.chat_id, text= Citations[random.randint(0, len(Citations))])
     pass
 
