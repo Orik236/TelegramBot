@@ -47,7 +47,7 @@ def kanat(bot, update):
     pass
 
 def citation(bot, update):
-    Citations = ["""Куда один туда и все.\n\t Нурик"""]
+    Citations = ["Куда один туда и все.\n (c)Нурик"]
     bot.sendMessage(chat_id=update.message.chat_id, text= Citations[random.randint(0, len(Citations))])
     pass
 
