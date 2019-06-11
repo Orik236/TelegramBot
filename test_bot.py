@@ -81,6 +81,7 @@ def main():
     dispatcher.add_handler(CommandHandler('john', John))
     dispatcher.add_handler(CommandHandler('today', vanga))
     dispatcher.add_handler(CommandHandler('getdog', dog))
+    dispatcher.add_handler(CommandHandler('citata', citation))
 
     dispatcher.add_handler(MessageHandler(Filters.command, unknown))
     #updater.start_polling()
