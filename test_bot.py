@@ -18,7 +18,7 @@ from telegram.ext import Updater, ConversationHandler, CommandHandler, MessageHa
 #client.upload_file('bot236.html', 'hello-spaces', 'туц-folder/bot_file.html')
 
 def start(bot, updater):
-    contents = requests.get('https://cataas.com/cat/says/hello')
+    contents = requests.get('https://cataas.com/cat/says/hello').json
     bot.send_photo(chat_id = update.message.chat_id, photo = contents['utl'])
     pass
 
