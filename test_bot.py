@@ -26,7 +26,7 @@ def cat(bot, update, args):
         bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat")
     else:
         user_says = " ".join(args)
-        bot.send_photo(chat_id=update.message.chat_id, photo="https://cataas.com/cat/" + user_says)
+        bot.send_photo(chat_id=update.message.chat_id, photo="https://cataas.com/cat/says/" + user_says)
 
 def get_url():
     contents = requests.get('https://random.dog/woof.json').json()
