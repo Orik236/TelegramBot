@@ -18,12 +18,13 @@ from telegram.ext import Updater, ConversationHandler, CommandHandler, MessageHa
 #client.upload_file('bot236.html', 'hello-spaces', 'туц-folder/bot_file.html')
 
 def start(bot, updater):
-    updater.message.reply_text("Hello")
+    contents = requests.get('https://cataas.com/cat/says/hello')
+    bot.send_photo(chat_id = update.message.chat_id, photo = contents['utl'])
     pass
 
 def get_url():
-    contents1 = requests.get('https://random.dog/woof.json').json()
-    url = contents1['url']
+    contents = requests.get('https://random.dog/woof.json').json()
+    url = contents['url']
     return url
 
 def dog(bot, update):
