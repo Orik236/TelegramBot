@@ -21,6 +21,13 @@ def start(bot, update):
     bot.send_photo(chat_id = update.message.chat_id, photo ="https://cataas.com/cat/says/hello" )
     pass
 
+def cat(bot, update, args):
+    if len(args) == 0:
+        bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat")
+    else:
+        user_says = " ".join(args)
+        bot.send_photo(chat_id=update.message.chat_id, photo="https://cataas.com/cat/" + user_says)
+
 def get_url():
     contents = requests.get('https://random.dog/woof.json').json()
     url = contents['url']
@@ -84,6 +91,7 @@ def main():
     dispatcher.add_handler(CommandHandler('today', vanga))
     dispatcher.add_handler(CommandHandler('getdog', dog))
     dispatcher.add_handler(CommandHandler('citata', citation))
+    dispatcher.add_handler((CommandHandler('cat', cat, pass_args=True)))
 
     dispatcher.add_handler(MessageHandler(Filters.command, unknown))
     #updater.start_polling()
