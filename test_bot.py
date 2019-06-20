@@ -14,14 +14,15 @@ def cat_with_tag(bot, update, args):
     bot.send_message(chat_id=update.message.chat_id,
                      text="Choose tag",
                      reply_markup=telegram.ReplyKeyboardMarkup(tag, one_time_keyboard=True))
-
+    telegram.ReplyKeyboardRemove()
     user_write = update.message.text
     bot.send_message(chat_id=update.message.chat_id,
                      text=user_write)
     if len(args) == 0:
         bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/" + user_write)
     else:
-        bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/" + user_write + '/' + " ".join(args))
+        bot.send_photo(chat_id = update.message.chat_id,
+                       photo = "https://cataas.com/cat/" + user_write + '/' + " ".join(args))
 
 def cat(bot, update, args):
     if len(args) == 0:
