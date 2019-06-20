@@ -13,7 +13,7 @@ def cat_with_tag(bot, update, args):
     tag = ReplyKeyboardMarkup(keyboard)
     bot.send_message(chat_id=update.message.chat_id,
                      text="Select tag",
-                     reply_markup=ReplyKeyboardMarkup(tag, one_time_keyboard=True))
+                     reply_markup=tag)
     update.message.reply_text("Nice choice",
                               reply_markup=ReplyKeyboardRemove())
     user_write = update.message.text
