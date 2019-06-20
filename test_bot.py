@@ -1,12 +1,20 @@
 import os, random
 import requests
 import telegram
-from telegram import update
-from telegram.ext import Updater, ConversationHandler, CommandHandler, MessageHandler, Filters, InlineQueryHandler
-
+from telegram.ext import Updater, ConversationHandler, CommandHandler, MessageHandler, Filters
 def start(bot, update):
     bot.send_photo(chat_id = update.message.chat_id, photo ="https://cataas.com/cat/says/hello" )
     pass
+
+def cat_with_tag(bot, update, args):
+    keyboard = [['top-left', 'top-middle', 'top-right'],
+                ['middle-left', 'middle - middle', 'middle-right'],
+                ['bottom-left', 'bottom-middle', 'bottom-right']]
+    tag = telegram.ReplyKeyboardMarkup(keyboard)
+    if len(args) == 0:
+        bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/" + tag)
+    else:
+        bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/" + tag + '/' + " ".join(args))
 
 def cat(bot, update, args):
     if len(args) == 0:
