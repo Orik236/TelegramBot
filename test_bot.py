@@ -7,14 +7,16 @@ def start(bot, update):
     pass
 
 def cat_with_tag(bot, update, args):
-    keyboard = [['top-left', 'top-middle', 'top-right'],
-                ['middle-left', 'middle - middle', 'middle-right'],
-                ['bottom-left', 'bottom-middle', 'bottom-right']]
+    keyboard = [['cute', 'happy', 'pirate'],
+                ['sleep', 'fat', 'halloween'],
+                ['loaf', 'wtf', 'facecat']]
     tag = telegram.ReplyKeyboardMarkup(keyboard)
     bot.send_message(chat_id=update.message.chat_id,
                      text="Choose tag",
                      reply_markup=tag)
     user_write = update.message
+    bot.send_message(chat_id=update.message.chat_id,
+                     text=user_write)
     if len(args) == 0:
         bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/" + user_write)
     else:
