@@ -17,9 +17,9 @@ def cat(bot, update, args):
 
 def cat_gif(bot, update, args):
     if len(args) == 0:
-        bot.send_photo(chat_id = update.message.chat_id, photo ="https://cataas.com/cat/gif")
+        bot.send_animation(chat_id = update.message.chat_id, animation="https://cataas.com/cat/gif")
     else:
-        bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/gif/says/" + " ".join(args))
+        bot.send_animation(chat_id = update.message.chat_id, animation = "https://cataas.com/cat/gif/says/" + " ".join(args))
 
 def get_url():
     contents = requests.get('https://random.dog/woof.json').json()
