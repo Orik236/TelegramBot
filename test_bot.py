@@ -88,6 +88,7 @@ def main():
     dispatcher.add_handler(CommandHandler('citata', citation))
     dispatcher.add_handler((CommandHandler('cat', cat, pass_args=True)))
     dispatcher.add_handler((CommandHandler("cat_gif", cat_gif, pass_args=True)))
+    dispatcher.add_handler(CommandHandler("cat_tag", cat_with_tag, pass_args=True))
 
 
     dispatcher.add_handler(MessageHandler(Filters.command, unknown))
