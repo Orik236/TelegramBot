@@ -11,6 +11,9 @@ def cat_with_tag(bot, update, args):
                 ['middle-left', 'middle - middle', 'middle-right'],
                 ['bottom-left', 'bottom-middle', 'bottom-right']]
     tag = telegram.ReplyKeyboardMarkup(keyboard)
+    bot.send_message(chat_id=update.message.chat_id,
+                     text="Choose tag",
+                     reply_markup=tag)
     if len(args) == 0:
         bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/" + tag)
     else:
