@@ -1,7 +1,7 @@
 import os, random
 import requests
 import telegram
-from telegram.ext import Updater, ConversationHandler, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters,
 def start(bot, update):
     bot.send_photo(chat_id = update.message.chat_id, photo ="https://cataas.com/cat/says/hello" )
     pass
@@ -13,7 +13,7 @@ def cat_with_tag(bot, update, args):
     tag = telegram.ReplyKeyboardMarkup(keyboard)
     bot.send_message(chat_id=update.message.chat_id,
                      text="Choose tag",
-                     reply_markup=tag, one_time_keyboard= True)
+                     reply_markup=telegram.ReplyKeyboardMarkup(tag, one_time_keyboard=True))
 
     user_write = update.message.text
     bot.send_message(chat_id=update.message.chat_id,
