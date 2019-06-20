@@ -12,9 +12,10 @@ def cat_with_tag(bot, update, args):
                 ['loaf', 'wtf', 'facecat']]
     tag = telegram.ReplyKeyboardMarkup(keyboard)
     bot.send_message(chat_id=update.message.chat_id,
-                     text="Choose tag",
+                     text="Select tag",
                      reply_markup=telegram.ReplyKeyboardMarkup(tag, one_time_keyboard=True))
-    telegram.ReplyKeyboardRemove()
+    update.message.reply_text("Nice choice",
+                              reply_markup=telegram.ReplyKeyboardRemove())
     user_write = update.message.text
     bot.send_message(chat_id=update.message.chat_id,
                      text=user_write)
