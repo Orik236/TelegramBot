@@ -1,6 +1,6 @@
 import os, random
 import requests
-import telegram
+from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 def start(bot, update):
     bot.send_photo(chat_id = update.message.chat_id, photo ="https://cataas.com/cat/says/hello" )
@@ -10,12 +10,12 @@ def cat_with_tag(bot, update, args):
     keyboard = [['cute', 'happy', 'pirate'],
                 ['sleep', 'fat', 'halloween'],
                 ['loaf', 'wtf', 'facecat']]
-    tag = telegram.ReplyKeyboardMarkup(keyboard)
+    tag = ReplyKeyboardMarkup(keyboard)
     bot.send_message(chat_id=update.message.chat_id,
                      text="Select tag",
-                     reply_markup=telegram.ReplyKeyboardMarkup(tag, one_time_keyboard=True))
+                     reply_markup=ReplyKeyboardMarkup(tag, one_time_keyboard=True))
     update.message.reply_text("Nice choice",
-                              reply_markup=telegram.ReplyKeyboardRemove())
+                              reply_markup=ReplyKeyboardRemove())
     user_write = update.message.text
     bot.send_message(chat_id=update.message.chat_id,
                      text=user_write)
@@ -108,7 +108,7 @@ def main():
 
     updater.idle()
 
-bot = telegram.Bot(token=os.environ['NICKNAME_TOKEN'])
+bot = Bot(token=os.environ['NICKNAME_TOKEN'])
 
 
 if __name__ == '__main__':
