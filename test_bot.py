@@ -16,16 +16,14 @@ def select_tag(bot, update,  args):
     pass
 
 def cat_with_tag(bot, update, args):
-    update.message.reply_text("Nice choice",
-                              reply_markup=ReplyKeyboardRemove())
-    user_write = update.message.text
-    bot.send_message(chat_id=update.message.chat_id,
-                     text=user_write)
+
+    #update.message.reply_text("Nice choice",
+     #                         reply_markup=ReplyKeyboardRemove())
     if len(args) == 0:
-        bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/" + user_write)
+        bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/" + update.message.text)
     else:
         bot.send_photo(chat_id = update.message.chat_id,
-                       photo = "https://cataas.com/cat/" + user_write + '/' + " ".join(args))
+                       photo = "https://cataas.com/cat/" + update.message.text + '/' + " ".join(args))
 
 def cat(bot, update, args):
     if len(args) == 0:
