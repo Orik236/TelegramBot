@@ -1,7 +1,7 @@
 import os, random
 import requests
 import telegram
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters,
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 def start(bot, update):
     bot.send_photo(chat_id = update.message.chat_id, photo ="https://cataas.com/cat/says/hello" )
     pass
