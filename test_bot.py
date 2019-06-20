@@ -1,21 +1,8 @@
 import os, random
 import requests
 import telegram
-from boto3 import session
 from telegram import update
 from telegram.ext import Updater, ConversationHandler, CommandHandler, MessageHandler, Filters, InlineQueryHandler
-
-#ACCESS_ID = 'PZRDEXSHSF6V3YZWZ542'
-#SECRET_KEY = 'cNaRThVExwqjuDtdMx4EC8LMstLFOAdEYz8vZkrf/M0'
-
-#session = session.Session()
-#client = session.client('s3',
- #                       region_name= 'nyc3',
-  #                      endpoint_url='https://nyc3.digitaloceanspaces.com',
-   #                     aws_access_key_id=ACCESS_ID,
-    #                    aws_secret_access_key=SECRET_KEY)
-
-#client.upload_file('bot236.html', 'hello-spaces', 'туц-folder/bot_file.html')
 
 def start(bot, update):
     bot.send_photo(chat_id = update.message.chat_id, photo ="https://cataas.com/cat/says/hello" )
@@ -27,6 +14,12 @@ def cat(bot, update, args):
     else:
         user_says = " ".join(args)
         bot.send_photo(chat_id=update.message.chat_id, photo="https://cataas.com/cat/says/" + user_says)
+
+def cat_gif(bot, update, args):
+    if len(args) == 0:
+        bot.send_gif(chat_id = update.message.chat_id, gif ="https://cataas.com/cat/gif")
+    else:
+        bot.send_gif(chat_id = update.message.chat_id, gif = "https://cataas.com/cat/gif/says/" + " ".join(args))
 
 def get_url():
     contents = requests.get('https://random.dog/woof.json').json()
@@ -48,15 +41,10 @@ def boyfriend(bot, update):
     bot.sendMessage(chat_id=update.message.chat_id, text=boy[random.randint(0, len(boy))])
     pass
 
-def kanat(bot, update):
-    Kanat = ['Мент', 'Кана', 'Каракурт', 'Котак']
-    bot.sendMessage(chat_id=update.message.chat_id, text=Kanat[random.randint(0, len(Kanat))])
-    pass
-
 def citation(bot, update):
     Citations = ["Куда один туда и все.\n(c)Нурик", "Махат поху котак бас.\n(с) Эдик",
                  "Вард на 15 секунд,\nА Абыл на час!\n(c) Канат", "Ебать, я телепортируюсь.\n(c) Нурдаудет",
-                 "Главное душа.\n(c) Ара", "Свои поймут.\n(c) Нурик"]
+                 "Главное душа.\n(c) Ара", "Свои поймут.\n(c) Нурик", "Я б ее оставил\nПрост по пути было\n(c) Ара"]
     bot.sendMessage(chat_id=update.message.chat_id, text= Citations[random.randint(0, len(Citations))])
     pass
 
@@ -86,12 +74,13 @@ def main():
     dispatcher.add_handler(CommandHandler('start', start))
     dispatcher.add_handler(CommandHandler('girlfriend', girlfriend))
     dispatcher.add_handler(CommandHandler('boyfriend', boyfriend))
-    dispatcher.add_handler(CommandHandler('kanat', kanat))
     dispatcher.add_handler(CommandHandler('john', John))
     dispatcher.add_handler(CommandHandler('today', vanga))
     dispatcher.add_handler(CommandHandler('getdog', dog))
     dispatcher.add_handler(CommandHandler('citata', citation))
     dispatcher.add_handler((CommandHandler('cat', cat, pass_args=True)))
+    dispatcher.add_handler((CommandHandler("cat_gif", cat_gif, pass_args=True)))
+
 
     dispatcher.add_handler(MessageHandler(Filters.command, unknown))
     #updater.start_polling()
