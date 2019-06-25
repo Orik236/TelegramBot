@@ -18,11 +18,9 @@ def select_tag(bot, update):
 
 def cat_with_tag(bot, update):
     user_say = update.message.text + '/'
-    tag = ReplyKeyboardRemove()
     bot.send_message(chat_id = update.message.chat_id,
-                     text = user_say + "Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
-                              "write message yo need to use /skip",
-                              reply_markup=tag)
+                     text = "Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
+                              "write message yo need to use /skip")
     return SEND
 
 def end(bot, update):
@@ -30,12 +28,15 @@ def end(bot, update):
     return CommandHandler.END
 
 def send_photo_with_tag(bot, update):
+    tag = ReplyKeyboardRemove()
     bot.send_photo(chat_id= update.message.chat_id,
-                   photo= "https://cataas.com/cat/" + user_say + update.message.text)
+                   photo= "https://cataas.com/cat/" + user_say + "says/" + update.message.text,
+                   reply_mark= tag)
     return CommandHandler.END
 
 def skip(bot, update):
-    bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say)
+    tag = ReplyKeyboardRemove()
+    bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say, reply_mark= tag)
     return CommandHandler.END
 
 def cat(bot, update, args):
