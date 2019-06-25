@@ -33,12 +33,12 @@ def send_photo_with_tag(bot, update):
     tag = ReplyKeyboardRemove()
     bot.send_photo(chat_id= update.message.chat_id,
                    photo= "https://cataas.com/cat/" + user_say + "says/" + update.message.text)
-    return CommandHandler.END
+    return TAG
 
 def skip(bot, update):
     tag = ReplyKeyboardRemove()
     bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say)
-    return CommandHandler.END
+    return TAG
 
 def cat(bot, update, args):
     if len(args) == 0:
