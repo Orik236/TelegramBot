@@ -36,6 +36,8 @@ def send_photo_with_tag(bot, update):
 
 def skip(bot, update):
     bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say)
+    return CommandHandler.END
+
 def cat(bot, update, args):
     if len(args) == 0:
         bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat")
