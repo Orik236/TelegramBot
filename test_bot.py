@@ -1,30 +1,37 @@
 import os, random
 import requests
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, Bot
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, RegexHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, RegexHandler, ConversationHandler
+
+TAG, SEND = range(2)
 def start(bot, update):
     bot.send_photo(chat_id = update.message.chat_id, photo ="https://cataas.com/cat/says/hello" )
     pass
 
-def select_tag(bot, update,  args):
+def select_tag(bot, update):
     keyboard = [['cute', 'happy', 'pirate'],
                 ['sleep', 'fat', 'halloween'],
                 ['loaf', 'wtf', 'facecat']]
     tag = ReplyKeyboardMarkup(keyboard)
     update.message.reply_text("Select tag", reply_mark = tag)
-    cat_with_tag(args)
     pass
 
-def cat_with_tag(bot, update, args):
+def cat_with_tag(bot, update):
+    user_say = update.message.text + '/'
+    update.message.reply_text("Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
+                              "write message yo need to use /skip",
+                              reply_markup=ReplyKeyboardRemove())
 
-    #update.message.reply_text("Nice choice",
-     #                         reply_markup=ReplyKeyboardRemove())
-    if len(args) == 0:
-        bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat/" + update.message.text)
-    else:
-        bot.send_photo(chat_id = update.message.chat_id,
-                       photo = "https://cataas.com/cat/" + update.message.text + '/' + " ".join(args))
+def end(bot, update):
+    update.message.reply_text("Thanks user :3")
+    return CommandHandler.END
 
+def send_photo_with_tag(bot, update):
+    bot.send_photo(chat_id= update.message.chat_id,
+                   photo= "https://cataas.com/cat/" + user_say + update.message.text)
+
+def skip(bot, update):
+    bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say)
 def cat(bot, update, args):
     if len(args) == 0:
         bot.send_photo(chat_id = update.message.chat_id, photo = "https://cataas.com/cat")
@@ -97,9 +104,16 @@ def main():
     dispatcher.add_handler(CommandHandler('citata', citation))
     dispatcher.add_handler((CommandHandler('cat', cat, pass_args=True)))
     dispatcher.add_handler((CommandHandler("cat_gif", cat_gif, pass_args=True)))
-    dispatcher.add_handler(CommandHandler("cat_tag", select_tag, pass_args=True))
+    conv = ConversationHandler(
+        entry_points= [CommandHandler('cat_tag', select_tag)],
+        states={
+            TAG: [RegexHandler('^(cute|pirate|happy|sleep|fat|halloween|loaf|wtf|facecat)$', cat_with_tag)],
+            SEND: [MessageHandler(Filters.text, send_photo_with_tag), CommandHandler('skip', skip)],
+        },
+        fallbacks= [CommandHandler('cancel', cancel)]
+    )
 
-
+    dispatcher.add_handler(conv)
     dispatcher.add_handler(MessageHandler(Filters.command, unknown))
     #updater.start_polling()
 
@@ -109,7 +123,7 @@ def main():
     updater.idle()
 
 bot = Bot(token=os.environ['NICKNAME_TOKEN'])
-
+user_say = ""
 
 if __name__ == '__main__':
     main()
