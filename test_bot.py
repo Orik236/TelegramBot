@@ -13,14 +13,16 @@ def select_tag(bot, update):
                 ['sleep', 'fat', 'halloween'],
                 ['loaf', 'wtf', 'facecat']]
     tag = ReplyKeyboardMarkup(keyboard)
-    update.message.reply_text("Select tag", reply_mark = tag)
+    bot.send_message(chat_id = update.message.chat_id, text = "Select tag", reply_mark = tag)
     return TAG
 
 def cat_with_tag(bot, update):
     user_say = update.message.text + '/'
-    update.message.reply_text(user_say + "Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
+    tag = ReplyKeyboardRemove()
+    bot.send_message(chat_id = update.message.chat_id,
+                     text = user_say + "Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
                               "write message yo need to use /skip",
-                              reply_markup=ReplyKeyboardRemove())
+                              reply_markup=tag)
     return SEND
 
 def end(bot, update):
@@ -30,6 +32,7 @@ def end(bot, update):
 def send_photo_with_tag(bot, update):
     bot.send_photo(chat_id= update.message.chat_id,
                    photo= "https://cataas.com/cat/" + user_say + update.message.text)
+    return CommandHandler.END
 
 def skip(bot, update):
     bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say)
@@ -80,8 +83,6 @@ def vanga(bot, update):
     bot.sendMessage(chat_id=update.message.chat_id, text= Today[random.randint(0, len(Today))])
     pass
 
-def cancel(bot, updater):
-    updater.message.reply_text('GoodByee')
 
 def unknown(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="unknown stuff.")
