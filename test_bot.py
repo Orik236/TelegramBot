@@ -14,13 +14,14 @@ def select_tag(bot, update):
                 ['loaf', 'wtf', 'facecat']]
     tag = ReplyKeyboardMarkup(keyboard)
     update.message.reply_text("Select tag", reply_mark = tag)
-    pass
+    return TAG
 
 def cat_with_tag(bot, update):
     user_say = update.message.text + '/'
     update.message.reply_text("Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
                               "write message yo need to use /skip",
                               reply_markup=ReplyKeyboardRemove())
+    return SEND
 
 def end(bot, update):
     update.message.reply_text("Thanks user :3")
@@ -110,7 +111,7 @@ def main():
             TAG: [RegexHandler('^(cute|pirate|happy|sleep|fat|halloween|loaf|wtf|facecat)$', cat_with_tag)],
             SEND: [MessageHandler(Filters.text, send_photo_with_tag), CommandHandler('skip', skip)],
         },
-        fallbacks= [CommandHandler('cancel', cancel)]
+        fallbacks= [CommandHandler('cancel', end)]
     )
 
     dispatcher.add_handler(conv)
