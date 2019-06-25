@@ -13,14 +13,16 @@ def select_tag(bot, update):
                 ['sleep', 'fat', 'halloween'],
                 ['loaf', 'wtf', 'facecat']]
     tag = ReplyKeyboardMarkup(keyboard)
-    bot.send_message(chat_id = update.message.chat_id, text = "Select tag", reply_mark = tag)
+    bot.send_message(chat_id = update.message.chat_id, text = "Select tag", reply_markup = tag)
     return TAG
 
 def cat_with_tag(bot, update):
     user_say = update.message.text + '/'
+    tag = ReplyKeyboardRemove()
     bot.send_message(chat_id = update.message.chat_id,
                      text = "Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
-                              "write message yo need to use /skip")
+                              "write message yo need to use /skip",
+                     reply_markup= tag)
     return SEND
 
 def end(bot, update):
@@ -30,13 +32,12 @@ def end(bot, update):
 def send_photo_with_tag(bot, update):
     tag = ReplyKeyboardRemove()
     bot.send_photo(chat_id= update.message.chat_id,
-                   photo= "https://cataas.com/cat/" + user_say + "says/" + update.message.text,
-                   reply_mark= tag)
+                   photo= "https://cataas.com/cat/" + user_say + "says/" + update.message.text)
     return CommandHandler.END
 
 def skip(bot, update):
     tag = ReplyKeyboardRemove()
-    bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say, reply_mark= tag)
+    bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say)
     return CommandHandler.END
 
 def cat(bot, update, args):
