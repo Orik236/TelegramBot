@@ -18,7 +18,7 @@ def select_tag(bot, update):
 
 def cat_with_tag(bot, update):
     user_say = update.message.text + '/'
-    update.message.reply_text("Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
+    update.message.reply_text(user_say + "Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
                               "write message yo need to use /skip",
                               reply_markup=ReplyKeyboardRemove())
     return SEND
