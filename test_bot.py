@@ -12,12 +12,12 @@ def select_tag(bot, update):
     keyboard = [['cute', 'happy', 'pirate'],
                 ['sleep', 'fat', 'halloween'],
                 ['loaf', 'wtf', 'facecat']]
-    tag = ReplyKeyboardMarkup(keyboard)
+    tag = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True)
     bot.send_message(chat_id = update.message.chat_id, text = "Select tag", reply_markup = tag)
     return TAG
 
 def cat_with_tag(bot, update):
-    user_say = update.message.text + '/'
+    user_say = update.message.text
     tag = ReplyKeyboardRemove()
     bot.send_message(chat_id = update.message.chat_id,
                      text = "Nice choice. Do you want to write any message on a photo ?\nIf you don`t want to"
@@ -27,18 +27,18 @@ def cat_with_tag(bot, update):
 
 def end(bot, update):
     update.message.reply_text("Thanks user :3")
-    return CommandHandler.END
+    return ConversationHandler.END
 
 def send_photo_with_tag(bot, update):
     tag = ReplyKeyboardRemove()
     bot.send_photo(chat_id= update.message.chat_id,
-                   photo= "https://cataas.com/cat/" + user_say + "says/" + update.message.text)
-    return CommandHandler.END
+                   photo= "https://cataas.com/cat/" + user_say + "/" + "says/" + update.message.text)
+    return ConversationHandler.END
 
 def skip(bot, update):
     tag = ReplyKeyboardRemove()
     bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say)
-    return CommandHandler.END
+    return ConversationHandler.END
 
 def cat(bot, update, args):
     if len(args) == 0:
