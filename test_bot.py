@@ -96,7 +96,9 @@ def unknown(bot, update):
     pass
 
 def John(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="ВАЧА ВАЧА ВАЧА, JOHN CENA!!!!!!")
+    bot.send_audio(chat_id = update.message.chat_id,
+                   audio = "https://done.7cord.com/proxy?data=N2lydEVhaDJjZTZDN2IvVHl4eFV4eDhJaFEzMU52ZnJWNm85MjNrZkNnYUpaN1B0aXdZRW41WUNjNkczWHprSlhYUkVQUUJ0ZGNnRzZ2V2J3UUtDUUlDZFRMQUIzVURYZW1oak1mU29pL2lURUhQalZOSmJsQ1lCVDQ3WDN1Qi9ibFh2MUZuaTdEb3Nua3VtVmJaODE5SEhsYjFCTXFtekczWC9PVG1lSHFWMHQwVURPTXNSVnJjN0w2akVqbk1sa1FRd1gzM1lMTHhUREZoTG93Ni96ck14TkRyeUYvOWNHVXJPMzZ6UHhxTkpsRy9CcGlXaWk2UjAvc3FtcEorMnNRUHptV280ZkUwRWFITEpKemNwdTYvaTBKTXQ0UEIvNnh2b20yV3RiOW1QbVh2OWZWSDlLVTlTbUhlQVZlSExzcGNFRnJ1bXVSTEdObnlqaEJwZVd1YllnODlmcXlZeldLakdLemVRdlNQNXMzaVpBeWVXNVFNWmYrTDcxNTF1UHl3YjkwMTNjUXZoWVA2bVZNT2JVVkdtNmpQZDFYU1IwZnJwcVFJNDZkenVFT1B0UGsrcmhrSHliQlVVVFN3MElNQTBDYlVyVUthbHloQUp3cnZqeXI0N1VPSWIyT2xNSVFlblkvemFhTjA9")
+    pass
 
 def main():
     TOKEN = os.environ['NICKNAME_TOKEN']
