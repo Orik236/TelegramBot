@@ -33,12 +33,12 @@ def send_photo_with_tag(bot, update):
     tag = ReplyKeyboardRemove()
     bot.send_photo(chat_id= update.message.chat_id,
                    photo= "https://cataas.com/cat/" + user_say + "says/" + update.message.text)
-    return TAG
+    return CommandHandler.END
 
 def skip(bot, update):
     tag = ReplyKeyboardRemove()
     bot.send_photo(chat_id = update.message.chat_id, photo= "https://cataas.com/cat/" + user_say)
-    return TAG
+    return CommandHandler.END
 
 def cat(bot, update, args):
     if len(args) == 0:
@@ -46,12 +46,15 @@ def cat(bot, update, args):
     else:
         user_says = " ".join(args)
         bot.send_photo(chat_id=update.message.chat_id, photo="https://cataas.com/cat/says/" + user_says)
+    pass
 
 def cat_gif(bot, update, args):
     if len(args) == 0:
         bot.send_animation(chat_id = update.message.chat_id, animation="https://cataas.com/cat/gif")
     else:
-        bot.send_animation(chat_id = update.message.chat_id, animation = "https://cataas.com/cat/gif/says/" + " ".join(args))
+        bot.send_animation(chat_id = update.message.chat_id,
+                           animation = "https://cataas.com/cat/gif/says/" + " ".join(args))
+    pass
 
 def get_url():
     contents = requests.get('https://random.dog/woof.json').json()
