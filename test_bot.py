@@ -97,7 +97,7 @@ def unknown(bot, update):
 
 def John(bot, update):
     bot.send_audio(chat_id = update.message.chat_id,
-                   audio = "http://5.79.69.210/sdb/c3/f6/04/222619973_437199237.mp3?name=dzhon-sina-hiz-neym-iz.mp3&id=1014064")
+                   audio = "https://www.myinstants.com/media/sounds/and-his-name-is-john-cena-1.mp3")
     pass
 
 def main():
