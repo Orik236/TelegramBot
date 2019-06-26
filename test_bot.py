@@ -97,7 +97,7 @@ def unknown(bot, update):
 
 def John(bot, update):
     bot.send_audio(chat_id = update.message.chat_id,
-                   audio = "https://done.7cord.com/proxy?data=N2lydEVhaDJjZTZDN2IvVHl4eFV4eDhJaFEzMU52ZnJWNm85MjNrZkNnYUpaN1B0aXdZRW41WUNjNkczWHprSlhYUkVQUUJ0ZGNnRzZ2V2J3UUtDUUlDZFRMQUIzVURYZW1oak1mU29pL2lURUhQalZOSmJsQ1lCVDQ3WDN1Qi9ibFh2MUZuaTdEb3Nua3VtVmJaODE5SEhsYjFCTXFtekczWC9PVG1lSHFWMHQwVURPTXNSVnJjN0w2akVqbk1sa1FRd1gzM1lMTHhUREZoTG93Ni96ck14TkRyeUYvOWNHVXJPMzZ6UHhxTkpsRy9CcGlXaWk2UjAvc3FtcEorMnNRUHptV280ZkUwRWFITEpKemNwdTYvaTBKTXQ0UEIvNnh2b20yV3RiOW1QbVh2OWZWSDlLVTlTbUhlQVZlSExzcGNFRnJ1bXVSTEdObnlqaEJwZVd1YllnODlmcXlZeldLakdLemVRdlNQNXMzaVpBeWVXNVFNWmYrTDcxNTF1UHl3YjkwMTNjUXZoWVA2bVZNT2JVVkdtNmpQZDFYU1IwZnJwcVFJNDZkenVFT1B0UGsrcmhrSHliQlVVVFN3MElNQTBDYlVyVUthbHloQUp3cnZqeXI0N1VPSWIyT2xNSVFlblkvemFhTjA9")
+                   audio = "http://5.79.69.210/sdb/c3/f6/04/222619973_437199237.mp3?name=dzhon-sina-hiz-neym-iz.mp3&id=1014064")
     pass
 
 def main():
